@@ -1,10 +1,14 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function Users() {
-    const [users, SetUsers] = useState([{
-        Name: "yousaf", Email: "ysf@gmail.com", Age: 20
-    }])
+    const [users, SetUsers] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3001')
+        .then(result => SetUsers(result.data))
+    })
   return (
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
         <div className='w-50 bg-white rounded p-3'>
