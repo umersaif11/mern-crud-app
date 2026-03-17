@@ -25,15 +25,21 @@ function UpdateUser() {
           <h2>Update User</h2>
           <div className='mb-2'>
             <label htmlFor="">Name</label>
-            <input type="text" placeholder='Enter Name' className='form-control' value={name}/>
+            <input type="text" placeholder='Enter Name' className='form-control' 
+            value={name}
+            onChange={(e) => setName(e.target.value)}/>
           </div>
           <div className='mb-2'>
             <label htmlFor="">Email</label>
-            <input type="email" placeholder='Enter Email' className='form-control' value={email}/>
+            <input type="email" placeholder='Enter Email' className='form-control' 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className='mb-2'>
             <label htmlFor="">Age</label>
-            <input type="text" placeholder='Enter Age' className='form-control' value={age}/>
+            <input type="text" placeholder='Enter Age' className='form-control' 
+            value={age}
+            onChange={(e) => setAge(e.target.value)}/>
           </div>
           <button className='btn btn-success'>Update</button>
         </form>
