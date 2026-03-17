@@ -11,20 +11,20 @@ mongoose.connect('mongodb://127.0.0.1:27017/crud')
 
 app.get('/', (req, res) => {
     UserModel.find({})
-    .then(users => res.send(users))
+    .then(users => res.json(users))
     .catch(err => res.json(err))
 })
 app.get('/getUser/:id', (req, res) => {
     const id = req.params.id
-    UserModel.find({_id: id})
-    .then(user => res.send(user))
+    UserModel.findById({_id: id})
+    .then(user => res.json(user))
     .catch(err => res.json(err))
 })
 app.put('/updateUser/:id', (req, res) => {
     const {id} = req.params
     const {name, email, age} = req.body
-    UserModel.find({_id: id}, {name, email, age})
-    .then(user => res.send(user))
+    UserModel.findByIdAndUpdate({_id: id}, {name, email, age})
+    .then(user => res.json(user))
     .catch(err => res.json(err))
 })
 app.post('/createUser', (req, res) => {
