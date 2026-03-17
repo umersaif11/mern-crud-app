@@ -14,6 +14,12 @@ app.get('/', (req, res) => {
     .then(users => res.send(users))
     .catch(err => res.json(err))
 })
+app.get('/getUser/:id', (req, res) => {
+    const id = req.params.id
+    UserModel.find({_id: id})
+    .then(user => res.send(user))
+    .catch(err => res.json(err))
+})
 app.post('/createUser', (req, res) => {
     UserModel.create(req.body)
     .then(users => res.json(users))
