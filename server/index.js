@@ -20,6 +20,13 @@ app.get('/getUser/:id', (req, res) => {
     .then(user => res.send(user))
     .catch(err => res.json(err))
 })
+app.put('/updateUser/:id', (req, res) => {
+    const {id} = req.params
+    const {name, email, age} = req.body
+    UserModel.find({_id: id}, {name, email, age})
+    .then(user => res.send(user))
+    .catch(err => res.json(err))
+})
 app.post('/createUser', (req, res) => {
     UserModel.create(req.body)
     .then(users => res.json(users))
