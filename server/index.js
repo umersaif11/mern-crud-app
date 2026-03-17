@@ -27,6 +27,12 @@ app.put('/updateUser/:id', (req, res) => {
     .then(user => res.json(user))
     .catch(err => res.json(err))
 })
+app.delete('/deleteUser/:id', (req, res) => {
+    const {id} = req.params
+    UserModel.findByIdAndDelete({_id: id})
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+})
 app.post('/createUser', (req, res) => {
     UserModel.create(req.body)
     .then(users => res.json(users))
